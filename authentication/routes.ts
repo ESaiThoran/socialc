@@ -2,9 +2,9 @@
 // RESTful API endpoints for user authentication and management
 
 import express, { Request, Response, Router } from 'express';
-import AuthenticationService from './auth';
-import { AuthMiddleware } from './middleware';
-import mongoService from '../shared/mongoService';
+import AuthenticationService from './auth.js';
+import { AuthMiddleware } from './middleware.js';
+import mongoService from '../shared/mongoService.js';
 
 const router: Router = express.Router();
 

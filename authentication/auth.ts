@@ -3,9 +3,9 @@
 
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import mongoService from '../shared/mongoService';
+import mongoService from '../shared/mongoService.js';
 import { ObjectId } from 'mongodb';
-import type { User } from '../shared/mongoSchemas';
+import type { User } from '../shared/mongoSchemas.js';
 
 interface JWTPayload {
   userId: string;

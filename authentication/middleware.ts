@@ -2,7 +2,7 @@
 // Middleware for protecting routes and managing user sessions
 
 import { Request, Response, NextFunction } from 'express';
-import AuthenticationService from './auth';
+import AuthenticationService from './auth.js';
 
 // Extend the Express Request interface to include user info
 declare global {

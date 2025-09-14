@@ -1,7 +1,7 @@
 // MongoDB Service Layer for SocialConnect
 // Database operations and business logic for the social media platform
 
-import mongoConfig from './mongoConfig';
+import mongoConfig from './mongoConfig.js';
 import { ObjectId, Db, UpdateResult, DeleteResult, InsertOneResult } from 'mongodb';
 import type { 
   User, 
@@ -14,7 +14,7 @@ import type {
   Hashtag,
   Conversation,
   Activity
-} from './mongoSchemas';
+} from './mongoSchemas.js';
 
 interface FindOptions {
   sort?: Record<string, 1 | -1>;

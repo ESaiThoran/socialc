@@ -4,12 +4,22 @@
   "description": "Modern real-time social media platform with React, Express, and MongoDB",
   "type": "module",
   "private": true,
+  "workspaces": [
+    "authentication",
+    "backend", 
+    "frontend",
+    "shared"
+  ],
   "scripts": {
-    "dev": "cross-env NODE_ENV=development ts-node-dev --respawn --transpile-only d:/socialconnect/backend/index.ts",
+    "install:all": "npm install && npm install --workspace=authentication && npm install --workspace=backend && npm install --workspace=frontend && npm install --workspace=shared",
+    "dev": "concurrently \"npm run dev --workspace=backend\" \"npm run dev --workspace=frontend\"",
     "build": "vite build",
-    "start": "cross-env NODE_ENV=production node d:/socialconnect/backend/index.ts",
+    "build:all": "npm run build --workspace=shared && npm run build --workspace=authentication && npm run build --workspace=backend && npm run build --workspace=frontend",
+    "start": "npm run start --workspace=backend",
     "check": "tsc --noEmit",
-    "db:push": "echo \"No migrations configured\""
+    "db:push": "echo \"No migrations configured\"",
+    "clean": "rm -rf node_modules authentication/node_modules backend/node_modules frontend/node_modules shared/node_modules",
+    "setup": "npm run install:all"
   },
   "keywords": ["social-media", "real-time", "mongodb", "react", "express", "websocket"],
   "author": "SocialConnect Team",
@@ -19,37 +29,12 @@
     "npm": ">=8.0.0"
   },
   "dependencies": {
-    "@replit/vite-plugin-cartographer": "^0.0.7",
-    "@replit/vite-plugin-runtime-error-modal": "^1.0.10",
-    "@tanstack/react-query": "^5.56.2",
-    "@types/jsonwebtoken": "^9.0.6",
-    "bcrypt": "^5.1.1",
-    "class-variance-authority": "^0.7.0",
     "dotenv": "^16.4.5",
-    "express": "^4.19.2",
-    "jsonwebtoken": "^9.0.2",
-    "mongodb": "^6.8.0",
-    "nanoid": "^5.0.7",
-    "nodemailer": "^6.9.14",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "wouter": "^3.2.1",
-    "ws": "^8.18.0",
-    "zod": "^3.23.8"
+    "concurrently": "^8.2.2"
   },
   "devDependencies": {
-    "@types/express": "^4.17.21",
     "@types/node": "^22.7.4",
-    "@types/react": "^18.3.5",
-    "@types/react-dom": "^18.3.0",
-    "@vitejs/plugin-react": "^4.3.3",
     "cross-env": "^7.0.3",
-    "tailwindcss": "^3.4.10",
-    "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.47",
-    "ts-node": "^10.9.2",
-    "ts-node-dev": "^2.0.0",
-    "typescript": "^5.6.2",
-    "vite": "^5.4.10"
+    "typescript": "^5.6.2"
   }
 }

@@ -2,9 +2,9 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { WebSocketServer, WebSocket } from "ws";
 import { ObjectId } from "mongodb";
-import mongoService from "../shared/mongoService";
-import authRoutes from "../authentication/routes";
-import { AuthMiddleware } from "../authentication/middleware";
+import mongoService from "../shared/mongoService.js";
+import authRoutes from "../authentication/routes.js";
+import { AuthMiddleware } from "../authentication/middleware.js";
 import { z } from "zod";
 
 interface WebSocketClient extends WebSocket {
